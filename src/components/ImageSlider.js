@@ -1,39 +1,31 @@
 import React, { useState } from "react";
 import { sliderData } from "./SliderData";
-import { FaArrowAltCircleRight, FaArrowAltCircleLeft } from "react-icons/fa";
+import { BsChevronCompactRight } from "react-icons/bs";
 
-export default function ImageSlider({slides}) {
+export default function ImageSlider({ slides }) {
   const [current, setCurrent] = useState(0);
   const length = slides.length;
 
   const nextSlide = () => {
-    setCurrent(current === length - 1 ? 0: current + 1);
-  };
-
-  const prevSlide = () => {
-    setCurrent(current === 0 ? length - 1 : current - 1);
+    setCurrent(current === length - 1 ? 0 : current + 1);
   };
 
   return (
     <section className="relative flex justify-center align-center">
-      <FaArrowAltCircleLeft
-        className="left-arrow absolute top-1/2 left-7 text-5xl z-10 cursor-pointer select-none"
-        onClick={prevSlide}
-      />
-      <FaArrowAltCircleRight
-        className="right-arrow absolute top-1/2 right-7 text-5xl z-10 cursor-pointer select-none"
+      <BsChevronCompactRight
+        className="right-arrow absolute top-1/2 right-7 text-7xl text-white opacity-50 z-10 cursor-pointer select-none "
         onClick={nextSlide}
       />
       {sliderData.map((slides, index) => {
         return (
           <div className="" key={index}>
-            {index === current && (
+            {index === current ? (
               <img
-                className="h-96 w-50 "
+                className="h-[502px] w-screen duration-500 bg-center bg-cover"
                 src={slides.image}
                 alt="subaru slide"
               />
-            )}
+            ) : null}
           </div>
         );
       })}
