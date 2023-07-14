@@ -1,11 +1,13 @@
 import React from "react";
 import Navigation from "./components/Navigation";
+import ImageSlider from "./components/ImageSlider";
+import { sliderData } from "./components/SliderData";
 
 function App() {
   return (
     <div className="App">
       <Navigation />
-      <h1 className="text-2xl"> Nothing </h1>
+      <ImageSlider slides={sliderData} />
     </div>
   );
 }
